@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UnitYFed - Sandbox de Mecánicas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="app-header">
+    <div>
+      <h1>UnitYFed</h1>
+      <p>Prototipo funcional para validar loops de juego de mesa.</p>
+    </div>
+    <div class="turn-box">
+      <strong>Jugador activo</strong>
+      <span id="active-player">-</span>
+      <small id="turn-counter">Turno 1</small>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="panel" id="resources-panel">
+      <h2>Recursos y PM</h2>
+      <div id="players-summary" class="players-summary"></div>
+      <div class="round-actions">
+        <button id="maintenance-btn">Ejecutar mantenimiento</button>
+        <button id="end-round-btn">Finalizar ronda</button>
+      </div>
+    </section>
+
+    <section class="panel hand-panel">
+      <h2>Mano</h2>
+      <p class="hint">Cada carta puede usarse una sola vez: recursos, PM o evento.</p>
+      <div id="hand"></div>
+    </section>
+
+    <section class="panel actions-panel">
+      <h2>Acciones</h2>
+      <div class="action-grid">
+        <form id="build-form" class="action-card">
+          <h3>Construir</h3>
+          <label>Tipo
+            <select id="build-type"></select>
+          </label>
+          <label>Nodo
+            <select id="build-node"></select>
+          </label>
+          <button type="submit">Construir (1 PM + recursos)</button>
+        </form>
+
+        <form id="move-form" class="action-card">
+          <h3>Mover unidad</h3>
+          <label>Origen
+            <select id="move-from"></select>
+          </label>
+          <label>Destino conectado
+            <select id="move-to"></select>
+          </label>
+          <button type="submit">Mover (1 PM)</button>
+        </form>
+
+        <form id="campaign-form" class="action-card">
+          <h3>Iniciar campaña</h3>
+          <label>Provincia
+            <select id="campaign-province"></select>
+          </label>
+          <label>Tipo
+            <select id="campaign-type">
+              <option value="militar">Militar</option>
+              <option value="politico">Política</option>
+              <option value="religioso">Religiosa</option>
+            </select>
+          </label>
+          <button type="submit">Campaña (1 PM)</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="panel provinces-panel">
+      <h2>Provincias y tracks</h2>
+      <div id="provinces" class="provinces"></div>
+    </section>
+
+    <section class="panel nodes-panel">
+      <h2>Nodos</h2>
+      <p class="hint">Los tokens se revelan cuando una unidad entra al nodo.</p>
+      <div id="nodes" class="nodes"></div>
+    </section>
+
+    <section class="panel log-panel">
+      <h2>Log</h2>
+      <div id="log" class="log"></div>
+    </section>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="cards.js"></script>
+  <script src="map.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
